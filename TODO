@@ -8,3 +8,7 @@
   contention for the thread pool locks and cache-coherency protocol
   thrashing, but will require implementing things like work-stealing
   queues.
+* Show how to combine futures with STM
+* Extend futures to distributed system
+* Build better thread/machine pool system
+* Future pipelining
