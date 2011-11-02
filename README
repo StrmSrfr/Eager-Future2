@@ -55,6 +55,14 @@ function pcall (thunk &optional (future-type *default-future-type*)) => future
 
   The function is called in an unspecified dynamic environment.
 
+special variable *default-future-type*
+
+  One of :eager, :speculative (default) or :lazy. If eager, any newly
+  created futures start their computation immediately. If speculative,
+  newly created futures are computed when thread pool threads are
+  available, in FIFO future creation order. If lazy, newly created
+  futures are not computed until asked to yield their values.
+
 function ready-to-yield? (future) => nil or non-nil
 
   Returns non-nil if the future values have been computed, nil otherwise.
