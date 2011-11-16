@@ -75,6 +75,12 @@
                (sleep 0.2)
                (and flag (yield foo))))))
 
+(test force-unstarted
+  (is (= 1
+         (let ((future (pcall (constantly 5) :lazy)))
+           (force future 1)
+           (yield future)))))
+
 (test gc-future
   (is (= 1
          (let ((foo 1))

@@ -31,7 +31,7 @@ computation of the future)."
         (return-from force nil)
         (setf (%values future) values)))
   (with-slots (computing-thread) future
-    (unless (eq computing-thread (current-thread))
+    (unless (or (null computing-thread) (eq computing-thread (current-thread)))
       (abort-scheduled-future-task computing-thread (future-id future)))
     (dolist (x (wait-list future))
       (with-lock-held ((car x))
